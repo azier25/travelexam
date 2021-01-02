@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Trip</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-9"></div>
+            <div class="col-3">
+                <a href="/dashboard">Home</a>
+                
+                <a href="/logout"> logout</a>
+            </div>
+        </div>
+    <nav class="navbar">
+
+    </nav>
+
+    <div class="container">
+        <h5>{{ trip.destination}}</h5>
+        <table class="table">
+            <p>Start Date: {{trip.start_date}}</p>
+            <p>End Date: {{trip.end_date}}</p>
+            <p>Created On: {{trip.created_at}}</p>
+            <p>Updated On: {{trip.updated_at}}</p>
+            <p>Plan: {{trip.plan}}</p>
+            <p>Created By: {{ trip.created_by.name}}</p>
+    </div>
+    </table>
+    <div>
+        <h5>Enjoy in trip:</h5>
+        {% for user in trip.user_id.all%}
+        <ul>
+            {% if trip.created_by != user %}
+            <li>{{user.name}}</li>
+            {% endif %}
+        </ul>
+        {% endfor %}
+    </div>
+</div>
+</body>
+
+</html>
